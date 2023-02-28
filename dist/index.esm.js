@@ -3,7 +3,7 @@
  * Licensed under MIT
  */
 
-const type = require('./type');
+const type = require('../src/type');
 
 function clone(source) {
     const t = type(source);
@@ -23,11 +23,11 @@ function clone(source) {
     } else {
         target = [];
         for (let i = 0; i < source.length; i++) {
-            target = clone(source[i]);
+            target[i] = clone(source[i]);
         }
     }
 
     return target;
 }
 
-module.exports = clone;
+export { clone };

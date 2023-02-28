@@ -4,12 +4,12 @@
  */
 
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (factory());
-}(this, (function () { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.clone = {})));
+}(this, (function (exports) { 'use strict';
 
-    const type = require('./type');
+    const type = require('../src/type');
 
     function clone(source) {
         const t = type(source);
@@ -29,13 +29,15 @@
         } else {
             target = [];
             for (let i = 0; i < source.length; i++) {
-                target = clone(source[i]);
+                target[i] = clone(source[i]);
             }
         }
 
         return target;
     }
 
-    module.exports = clone;
+    exports.clone = clone;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

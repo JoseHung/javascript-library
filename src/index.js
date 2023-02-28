@@ -1,6 +1,6 @@
-const type = require('./type');
+const type = require('../src/type');
 
-function clone(source) {
+export function clone(source) {
     const t = type(source);
     if (t != 'object' && t != 'array') {
         return source;
@@ -18,11 +18,9 @@ function clone(source) {
     } else {
         target = [];
         for (let i = 0; i < source.length; i++) {
-            target = clone(source[i]);
+            target[i] = clone(source[i]);
         }
     }
 
     return target;
 }
-
-module.exports = clone;

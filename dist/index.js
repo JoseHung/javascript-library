@@ -5,7 +5,9 @@
 
 'use strict';
 
-const type = require('./type');
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const type = require('../src/type');
 
 function clone(source) {
     const t = type(source);
@@ -25,11 +27,11 @@ function clone(source) {
     } else {
         target = [];
         for (let i = 0; i < source.length; i++) {
-            target = clone(source[i]);
+            target[i] = clone(source[i]);
         }
     }
 
     return target;
 }
 
-module.exports = clone;
+exports.clone = clone;
