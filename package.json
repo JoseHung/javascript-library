@@ -6,7 +6,7 @@
   "module": "dist/index.esm.js",
   "jsnext": "dist/index.esm.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
     "build:self": "rollup -c config/rollup.config.js",
     "build:esm": "rollup -c config/rollup.config.esm.js",
     "build:aio": "rollup -c config/rollup.config.aio.js",
@@ -31,5 +31,8 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "nyc": "^13.1.0"
+  }
 }
